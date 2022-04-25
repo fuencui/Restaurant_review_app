@@ -16,6 +16,7 @@ router.post('/authenticate', function(request, response) {
                 const token = jwt.sign(payload, "FUEN_SECRET", {
                     expiresIn: '14d'
                 });
+                request.session.username = username;
                 return response.cookie('token', token, {httpOnly: true})
                     .status(200).send({username});
             } 
@@ -31,12 +32,13 @@ router.post('/logout', auth_middleware, function(request, response) {
     const token = jwt.sign({}, "FUEN_SECRET", {
         expiresIn: '0s'
     });
+    request.session.destroy();
     return response.cookie('token', token, {httpOnly: true})
         .status(200).send();
 })
 
 router.get('/isLoggedIn', auth_middleware, function(request, response) {
-    return response.status(200).send({username: request.username});
+    return response.status(200).send({username: request.username})
 })
 
 router.get('/:username', function(request, response) {
@@ -74,6 +76,7 @@ router.post('/', function(request, response) {
                 const token = jwt.sign(payload, "FUEN_SECRET", {
                     expiresIn: '14d'
                 });
+                request.session.username = username;
                 return response.cookie('token', token, {httpOnly: true})
                     .status(200).send({username});
             } 

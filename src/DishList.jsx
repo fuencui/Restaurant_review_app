@@ -5,6 +5,7 @@ import './DishList.css';
 import NavBar from './NavBar';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+
 export default function DishList() {
     const [allDish, setAllDish] = useState([]);
 

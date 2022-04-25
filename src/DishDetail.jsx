@@ -87,7 +87,7 @@ export default function DishDetail(props){
             await axios.delete('/api/comment/deleteAll/' + param.dishId)
             .then(res => console.log('detele all'))
             .catch(e => console.log(e));
-            await axios.delete('/deleteDish/' + param.dishId)
+            await axios.delete('/api/dish/deleteDish/' + param.dishId)
             .then(res => navigate('/dish'))
             .catch(e => console.log(e));
 
@@ -177,7 +177,7 @@ export default function DishDetail(props){
                     </InputGroup>
             
                     <InputGroup size="sm" className="mb-3">
-                    <InputGroup.Text id="inputGroup-sizing-sm">Rank</InputGroup.Text>
+                    <InputGroup.Text id="inputGroup-sizing-sm">Rate</InputGroup.Text>
                         <FormControl type='number' value={comment.rank} min="0" max="5" step="0.5" onChange={e => {setComment({...comment, rank: e.target.value})}} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                     </InputGroup>
                     
@@ -210,7 +210,7 @@ export default function DishDetail(props){
                 </InputGroup>
         
                 <InputGroup size="sm" className="mb-3">
-                <InputGroup.Text id="inputGroup-sizing-sm">Rank</InputGroup.Text>
+                <InputGroup.Text id="inputGroup-sizing-sm">Rate</InputGroup.Text>
                     <FormControl type='number' value={comment.rank} min="0" max="5" step="0.5" onChange={e => {setComment({...comment, rank: e.target.value})}} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                 </InputGroup>
                 
@@ -237,8 +237,8 @@ export default function DishDetail(props){
         dishDetailComponent.push(
             <div className='commentContainer' key={comment._id}>
                 <h3>Username: {comment.username}</h3>
-                <h3>Commennt: {comment.comment}</h3>
-                <h3>Rank: {comment.rank}</h3> 
+                <h3>Comment: {comment.comment}</h3>
+                <h3>Rate: {comment.rank}</h3> 
                 {ableToDeteleCommentEdit(comment.username)} 
             </div>
     )}
@@ -251,7 +251,7 @@ export default function DishDetail(props){
                 <div className='reviewContainer' key={dish._id}>
                     {base64ToImage(dish)}
                     <h3>Username: {dish.username}</h3>
-                    <h3>Average Rank: {dish.rank}</h3>
+                    <h3>Average Rate: {dish.rank}</h3>
                     {ableToDetele()}
                 </div>
                 {dishDetailComponent}

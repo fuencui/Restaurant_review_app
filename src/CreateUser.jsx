@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 import './CreateUser.css';
 
@@ -16,7 +16,6 @@ export default function CreateUser(props) {
                 console.log("Created user");
                 console.log(response.data);
                 navigate('/');
-
             })
             .catch(error => console.log(error));
     }

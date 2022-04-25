@@ -18,7 +18,7 @@ export default function NavBar(props) {
         axios.get('/api/user/isLoggedIn')
         .then(response => setUsername(response.data.username))
         .catch(error => console.log("User is not logged in " + username));
-    }, [username])
+    }, [])
 
     async function logout(){
         let promise = new Promise((resolve, reject) => {
