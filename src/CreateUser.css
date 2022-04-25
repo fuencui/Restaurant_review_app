@@ -1,0 +1,19 @@
+.mainContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    position: relative;
+    background-color: #fbc4ab;
+    position:fixed;
+    left:50%;   
+    top:50%;
+    transform: translate(-50%,-50%); 
+    border: #fbc4ab solid 10px;
+    border-radius: 10%;
+}
+.button{
+    margin-top: 10px;
+}
